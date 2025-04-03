@@ -1,0 +1,84 @@
+@use 'variables'; // Переменные (цвета, шрифты и т.д.)
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 250px;
+    &__logo {
+        img {
+            height: 60px;
+            user-select: none;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        gap: 50px;
+
+        a {
+            text-decoration: none;
+            color: variables.$primary-light;
+            font-weight: 600;
+        }
+    }
+
+    &__search {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        padding: 5px 8px;
+
+        input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 310px;
+            color: #333333;
+
+            &::placeholder {
+                color: variables.$text-light;
+            }
+        }
+
+        .search-btn {
+            display: inline-flex;
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            img {
+                height: 25px;
+                align-items: center;
+                user-select: none;
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+
+        .btn-add-object, .btn-primary {
+            height: 45px;
+            background: variables.$primary-light;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-add-object {
+            width: 45px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            width: 75px;
+            font-weight: 600;
+        }
+    }
+}

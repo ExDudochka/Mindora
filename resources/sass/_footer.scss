@@ -1,0 +1,27 @@
+@use 'variables'; // Переменные (цвета, шрифты и т.д.)
+
+.site-footer {
+    background: variables.$background-dark;
+    clip-path: polygon(23% 25%, 77% 25%, 80% 5%, 100% 5%, 100% 100%, 0 100%, 0 5%, 20% 5%);
+}
+.footer-container {
+    padding: 150px 250px 10px 250px;
+
+    &__row {
+        display: flex;
+
+        div>h5 {
+            color: variables.$heading-dark;
+        }
+        li>a {
+            color: variables.$text-dark;
+            text-decoration: none;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+    }
+    .copyright {
+        color: variables.$text-dark;
+    }
+}

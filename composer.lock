@@ -2345,7 +2345,7 @@
                 "array",
                 "core",
                 "datetime",
-                "images",
+                "resources",
                 "json",
                 "nette",
                 "paginator",

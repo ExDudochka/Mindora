@@ -1,0 +1,23 @@
+@use 'variables'; // Переменные (цвета, шрифты и т.д.)
+@use 'header';    // Стили шапки
+@use 'footer';    // Стили подвала
+@use 'welcome'; // Стили страницы приветствия
+
+html {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;;
+}
+main {
+    flex: 1 0 auto;
+    padding: 0 250px;
+}
+::selection {
+    background: variables.$primary-light;
+    color: variables.$white;
+}
+

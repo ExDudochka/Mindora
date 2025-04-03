@@ -1,0 +1,144 @@
+@charset "UTF-8";
+/* Цвета */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 250px;
+}
+.header-container__logo img {
+  height: 60px;
+  user-select: none;
+}
+.header-container__menu {
+  display: flex;
+  gap: 50px;
+}
+.header-container__menu a {
+  text-decoration: none;
+  color: #3a86ff;
+  font-weight: 600;
+}
+.header-container__search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 5px 8px;
+}
+.header-container__search input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 310px;
+  color: #333333;
+}
+.header-container__search input::placeholder {
+  color: #333333;
+}
+.header-container__search .search-btn {
+  display: inline-flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.header-container__search .search-btn img {
+  height: 25px;
+  align-items: center;
+  user-select: none;
+}
+.header-container__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.header-container__actions .btn-add-object, .header-container__actions .btn-primary {
+  height: 45px;
+  background: #3a86ff;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+.header-container__actions .btn-add-object {
+  width: 45px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.header-container__actions .btn-primary {
+  width: 75px;
+  font-weight: 600;
+}
+
+.site-footer {
+  background: #191A27;
+  clip-path: polygon(23% 25%, 77% 25%, 80% 5%, 100% 5%, 100% 100%, 0 100%, 0 5%, 20% 5%);
+}
+
+.footer-container {
+  padding: 150px 250px 10px 250px;
+}
+.footer-container__row {
+  display: flex;
+}
+.footer-container__row div > h5 {
+  color: #E0E0E0;
+}
+.footer-container__row li > a {
+  color: #A0A0A0;
+  text-decoration: none;
+}
+.footer-container__row li {
+  margin-bottom: 4px;
+}
+.footer-container .copyright {
+  color: #A0A0A0;
+}
+
+.features-container .slogan {
+  display: flex;
+  justify-content: center;
+}
+.features-container .feature-text > p {
+  color: #333333;
+}
+.features-container .feature-text > p h2 {
+  color: #222222;
+}
+.features-container .row {
+  padding: 25px 0;
+}
+.features-container .image-container {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+.features-container #helper-light {
+  width: 300px;
+}
+.features-container #growth-light {
+  width: 200px;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 0 250px;
+}
+
+::selection {
+  background: #3a86ff;
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=app.css.map */
