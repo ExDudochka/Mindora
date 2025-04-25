@@ -1,7 +1,16 @@
+/* Переменные */
 @use 'variables'; // Переменные (цвета, шрифты и т.д.)
+
+/* Компоненты */
 @use 'header';    // Стили шапки
 @use 'footer';    // Стили подвала
+@use 'auth-modal'; // Стили модального окна авторизации
+
+/* Страницы */
 @use 'welcome'; // Стили страницы приветствия
+
+/* Общие стили */
+
 
 html {
     overflow-y: scroll;
@@ -20,4 +29,3 @@ main {
     background: variables.$primary-light;
     color: variables.$white;
 }
-

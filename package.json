@@ -61,6 +61,7 @@
     "lightningcss-win32-x64-msvc": "^1.29.2",
     "lodash": "^4.17.21",
     "math-intrinsics": "^1.1.0",
+    "micromodal": "^0.6.1",
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
     "nanoid": "^3.3.11",

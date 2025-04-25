@@ -1,5 +1,8 @@
 @charset "UTF-8";
+/* Переменные */
 /* Цвета */
+/* Компоненты */
+/* Переменные */
 .header-container {
   display: flex;
   align-items: center;
@@ -7,7 +10,7 @@
   padding: 10px 250px;
 }
 .header-container__logo img {
-  height: 60px;
+  height: 75px;
   user-select: none;
 }
 .header-container__menu {
@@ -53,7 +56,7 @@
   justify-content: center;
   gap: 15px;
 }
-.header-container__actions .btn-add-object, .header-container__actions .btn-primary {
+.header-container__actions .btn-add-object, .header-container__actions .btn-auth {
   height: 45px;
   background: #3a86ff;
   color: white;
@@ -66,11 +69,12 @@
   font-size: 20px;
   font-weight: 700;
 }
-.header-container__actions .btn-primary {
+.header-container__actions .btn-auth {
   width: 75px;
   font-weight: 600;
 }
 
+/* Переменные */
 .site-footer {
   background: #191A27;
   clip-path: polygon(23% 25%, 77% 25%, 80% 5%, 100% 5%, 100% 100%, 0 100%, 0 5%, 20% 5%);
@@ -96,6 +100,168 @@
   color: #A0A0A0;
 }
 
+/* Переменные */
+/* Отключаем прокрутку при открытии модалки */
+body.modal-open,
+html.modal-open {
+  overflow: hidden !important;
+  height: 100% !important;
+}
+
+/* Общие стили модалки */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.modal.is-open {
+  display: flex;
+}
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal__container {
+  position: relative;
+  background: white;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+}
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #3a86ff;
+}
+
+/* Заголовок модалки */
+.sign {
+  color: #3a86ff;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Метка поля */
+.label {
+  font-size: 14px;
+  padding-top: 10px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Поля ввода */
+.input, .pass {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.input::placeholder, .pass::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+.input:focus, .pass:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+/* Кнопка: Войти / Зарегистрироваться */
+.submit {
+  margin: 30px 0 0 0;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #3498db;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: block;
+}
+.submit:hover {
+  background-color: #2980b9;
+}
+.submit:focus {
+  outline: none;
+}
+
+/* Контейнер ссылок под формой */
+.auth-links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.auth-links-container p {
+  margin: 0;
+}
+.auth-links-container a {
+  color: #3a86ff;
+  text-decoration: none;
+}
+.auth-links-container a:hover {
+  text-decoration: underline;
+}
+
+/* Контейнер для форм */
+.auth-modal .auth-content {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Убираем "глаз" */
+.password-field {
+  position: relative;
+}
+.password-field input {
+  padding-right: 20px;
+}
+.password-field .toggle-password {
+  display: none;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+  .modal__container {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+}
+/* Страницы */
+/* Переменные */
 .features-container .slogan {
   display: flex;
   justify-content: center;
@@ -115,12 +281,13 @@
   user-select: none;
 }
 .features-container #helper-light {
-  width: 300px;
+  width: 325px;
 }
 .features-container #growth-light {
   width: 200px;
 }
 
+/* Общие стили */
 html {
   overflow-y: scroll;
   height: 100%;

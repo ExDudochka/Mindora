@@ -22,7 +22,7 @@
 
         <div class="header-container__actions">
             <button class="btn-add-object">＋</button>
-            <button class="btn-primary">Вход</button>
+            <button class="btn-auth" id="auth-reg-btn" data-auth-trigger="auth-modal">Вход</button>
         </div>
     </div>
 </header>

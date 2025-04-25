@@ -7,7 +7,7 @@
     padding: 10px 250px;
     &__logo {
         img {
-            height: 60px;
+            height: 75px;
             user-select: none;
         }
     }
@@ -62,7 +62,7 @@
         justify-content: center;
         gap: 15px;
 
-        .btn-add-object, .btn-primary {
+        .btn-add-object, .btn-auth {
             height: 45px;
             background: variables.$primary-light;
             color: white;
@@ -76,7 +76,7 @@
             font-weight: 700;
         }
 
-        .btn-primary {
+        .btn-auth {
             width: 75px;
             font-weight: 600;
         }
