@@ -100,166 +100,6 @@
   color: #A0A0A0;
 }
 
-/* Переменные */
-/* Отключаем прокрутку при открытии модалки */
-body.modal-open,
-html.modal-open {
-  overflow: hidden !important;
-  height: 100% !important;
-}
-
-/* Общие стили модалки */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-}
-.modal.is-open {
-  display: flex;
-}
-.modal__overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.modal__container {
-  position: relative;
-  background: white;
-  border-radius: 1.5em;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-  padding: 40px;
-  max-width: 400px;
-  width: 100%;
-}
-.modal__close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #3a86ff;
-}
-
-/* Заголовок модалки */
-.sign {
-  color: #3a86ff;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: bold;
-  font-size: 23px;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* Метка поля */
-.label {
-  font-size: 14px;
-  padding-top: 10px;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 5px;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-/* Поля ввода */
-.input, .pass {
-  width: 100%;
-  padding: 12px 20px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #333;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.input::placeholder, .pass::placeholder {
-  color: #aaa;
-  font-style: italic;
-}
-.input:focus, .pass:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-  outline: none;
-}
-
-/* Кнопка: Войти / Зарегистрироваться */
-.submit {
-  margin: 30px 0 0 0;
-  width: 100%;
-  padding: 12px 20px;
-  background-color: #3498db;
-  color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  display: block;
-}
-.submit:hover {
-  background-color: #2980b9;
-}
-.submit:focus {
-  outline: none;
-}
-
-/* Контейнер ссылок под формой */
-.auth-links-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  font-size: 14px;
-}
-.auth-links-container p {
-  margin: 0;
-}
-.auth-links-container a {
-  color: #3a86ff;
-  text-decoration: none;
-}
-.auth-links-container a:hover {
-  text-decoration: underline;
-}
-
-/* Контейнер для форм */
-.auth-modal .auth-content {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  padding: 0;
-}
-
-/* Убираем "глаз" */
-.password-field {
-  position: relative;
-}
-.password-field input {
-  padding-right: 20px;
-}
-.password-field .toggle-password {
-  display: none;
-}
-
-/* Адаптив */
-@media (max-width: 600px) {
-  .modal__container {
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 0;
-  }
-}
 /* Страницы */
 /* Переменные */
 .features-container .slogan {
@@ -287,6 +127,108 @@ html.modal-open {
   width: 200px;
 }
 
+/* Переменные */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.wrapper {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+  color: #3a86ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.input,
+.pass {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #3a86ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.submit:hover {
+  background-color: #0767ff;
+}
+
+.auth-links-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.auth-links-container a {
+  font-size: 14px;
+  color: #3a86ff;
+  text-decoration: none;
+  position: relative;
+}
+.auth-links-container a::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.auth-links-container a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
 /* Общие стили */
 html {
   overflow-y: scroll;

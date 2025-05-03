@@ -3,5 +3,5 @@
 @section('title', '_')
 
 @section('content')
-
+<p>awawd</p>
 @endsection
