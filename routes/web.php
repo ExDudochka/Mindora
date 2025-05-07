@@ -14,5 +14,5 @@ Route::get('/home', function () {
 Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
 
-Route::post('/login', [LoginController::class, 'authentication'])->name('llogin');
+Route::post('/login', [LoginController::class, 'authentication'])->name('authentication');
 Route::post('/register', [LoginController::class, 'createRegister'])->name('register');

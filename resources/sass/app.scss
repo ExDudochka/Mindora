@@ -10,21 +10,24 @@
 @use 'login';     // Стили страницы авторизации и регистрации
 
 /* Общие стили */
-
-
-html {
-    overflow-y: scroll;
+html, body {
     height: 100%;
 }
 
 body {
+    font-family: variables.$font-main !important;
+    overflow-y: scroll;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
+
 main {
     flex: 1 0 auto;
     padding: 0 250px;
 }
+
 ::selection {
     background: variables.$primary-light;
     color: variables.$white;
