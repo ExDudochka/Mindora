@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('test_id')->constrained('tests')->cascadeOnDelete();
+            $table->foreignId('examtest_id')->constrained('examtests')->cascadeOnDelete();
             $table->text('content');
             $table->enum('type', ['single','multiple','text']);
             $table->integer('position')->default(0);  // порядок вопросов
             $table->timestamps();
 
-            $table->index(['test_id', 'position']);
+            $table->index(['examtest_id', 'position']);
         });
     }
 

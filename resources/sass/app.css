@@ -60,21 +60,25 @@
   gap: 15px;
 }
 .header-container__actions .btn-add-object, .header-container__actions .btn-auth {
-  height: 45px;
+  min-height: 45px;
   background: #3a86ff;
-  color: white;
+  color: #ffffff;
   border-radius: 10px;
   cursor: pointer;
   border: none;
+  transition: background-color 0.2s;
+}
+.header-container__actions .btn-add-object:hover, .header-container__actions .btn-auth:hover {
+  background-color: #1774ff;
 }
 .header-container__actions .btn-add-object {
-  width: 45px;
+  padding: 0 0.75rem;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .header-container__actions .btn-auth {
-  width: 75px;
-  font-weight: 600;
+  padding: 0 1.5rem;
+  font-weight: 500;
 }
 @media (max-width: 1200px) {
   .header-container {
@@ -189,43 +193,38 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.auth-header {
+.wrapper .auth-header {
   color: #3a86ff;
   text-align: center;
   margin-bottom: 20px;
 }
-
-.login-form,
-.register-form {
+.wrapper .login-form,
+.wrapper .register-form {
   display: flex;
   flex-direction: column;
 }
-
-.login-label,
-.register-label {
+.wrapper .login-label,
+.wrapper .register-label {
   margin: 10px 0 5px;
   color: #333;
 }
-
-.register-input,
-.login-input,
-.pass {
+.wrapper .register-input,
+.wrapper .login-input,
+.wrapper .pass {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.register-input:focus,
-.login-input:focus,
-.pass:focus {
+.wrapper .register-input:focus,
+.wrapper .login-input:focus,
+.wrapper .pass:focus {
   outline: none;
-  border-color: #000;
-  box-shadow: 0 0 0 1px #000;
+  border-color: #3a86ff;
+  box-shadow: 0 0 3px #3a86ff;
 }
-
-.register-submit,
-.login-submit {
+.wrapper .register-submit,
+.wrapper .login-submit {
   margin-top: 15px;
   padding: 10px;
   background-color: #3a86ff;
@@ -235,23 +234,22 @@ body {
   cursor: pointer;
   transition: background-color 0.2s;
 }
-.register-submit:hover,
-.login-submit:hover {
+.wrapper .register-submit:hover,
+.wrapper .login-submit:hover {
   background-color: #1774ff;
 }
-
-.auth-links-container {
+.wrapper .auth-links-container {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
 }
-.auth-links-container a {
+.wrapper .auth-links-container a {
   font-size: 14px;
   color: #3a86ff;
   text-decoration: none;
   position: relative;
 }
-.auth-links-container a::after {
+.wrapper .auth-links-container a::after {
   content: "";
   position: absolute;
   bottom: -1px;
@@ -263,7 +261,7 @@ body {
   transform-origin: left;
   transition: transform 0.5s ease;
 }
-.auth-links-container a:hover::after {
+.wrapper .auth-links-container a:hover::after {
   transform: scaleX(1);
 }
 
@@ -275,6 +273,105 @@ body {
 @media (max-width: 480px) {
   .wrapper {
     padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+/* Переменные */
+.create-test-container {
+  padding: 0 250px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.create-test-container h1, .create-test-container h2 {
+  text-align: center;
+  color: #3a86ff;
+  padding: 1rem 0;
+}
+.create-test-container .new-test-form {
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.create-test-container .new-test-form .test-label {
+  margin: 12px 0 6px;
+  color: #333;
+  font-weight: 500;
+}
+.create-test-container .new-test-form .test-input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.create-test-container .new-test-form .test-input:focus {
+  outline: none;
+  border-color: #3a86ff;
+  box-shadow: 0 0 3px #3a86ff;
+}
+.create-test-container .new-test-form .test-submit {
+  padding: 10px;
+  background-color: #3a86ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.create-test-container .new-test-form .test-submit:hover {
+  background-color: #1774ff;
+}
+.create-test-container .new-test-form .links-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+.create-test-container .new-test-form .links-container a {
+  font-size: 14px;
+  color: #3a86ff;
+  text-decoration: none;
+  position: relative;
+}
+.create-test-container .new-test-form .links-container a::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1.25px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.create-test-container .new-test-form .links-container a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 992px) {
+  .create-test-container {
+    padding: 0 100px;
+  }
+}
+@media (max-width: 768px) {
+  .create-test-container {
+    padding: 0 40px;
+  }
+  .create-test-container .new-test-form {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .create-test-container {
+    padding: 0 15px;
+  }
+  .create-test-container .new-test-form {
+    padding: 15px;
     border-radius: 0;
     box-shadow: none;
   }

@@ -1,7 +1,7 @@
 <header class="site-header">
     <div class="header-container">
         <div class="header-container__logo">
-            <a href="#">
+            <a href="{{ route('home') }}">
                 <img src="{{ asset('images/light/logo.png') }}" alt="Mindora" draggable="false">
             </a>
         </div>
@@ -9,7 +9,7 @@
         <nav class="header-container__menu">
             <a href="#">Случайный тест</a>
             <div class="dropdown">
-                <a href="#" class="dropdown-toggle">Дисциплины</a>
+                <a href="#" class="dropdown-toggle">Категории</a>
             </div>
         </nav>
 
@@ -21,7 +21,7 @@
         </div>
 
         <div class="header-container__actions">
-            <button class="btn-add-object">＋</button>
+            <a href="{{ route('create_new_test') }}"><button class="btn-add-object">＋</button></a>
             <button class="btn-auth" id="auth-reg-btn" data-auth-trigger="auth-modal">Вход</button>
         </div>
     </div>

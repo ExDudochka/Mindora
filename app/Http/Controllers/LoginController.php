@@ -24,9 +24,9 @@ class LoginController extends Controller
         ]);
 
         User::create([
-            'name' => $request->first_name,
-            'second_name' => $request->middle_name,
-            'patronymic' => $request->last_name,
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
             'login' => $request->login,
             'email' => $request->email,
             'phone' => $request->phone,

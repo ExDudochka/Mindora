@@ -1,4 +1,4 @@
-@use 'variables'; // Переменные (цвета, шрифты и т.д.)
+@use '../variables'; // Переменные (цвета, шрифты и т.д.)
 
 .site-footer {
     background: variables.$background-dark;

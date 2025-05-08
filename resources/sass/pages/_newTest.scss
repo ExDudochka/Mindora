@@ -1,0 +1,116 @@
+@use '../variables'; // Шрифты, цвета и т.д.
+
+.create-test-container {
+    padding: 0 250px;
+    background-color: variables.$white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    h1, h2 {
+        text-align: center;
+        color: variables.$primary-light;
+        padding: 1rem 0;
+    }
+
+    .new-test-form {
+        background-color: variables.$white; // Явно белый фон
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .test-label {
+            margin: 12px 0 6px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .test-input {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+
+            &:focus {
+                outline: none;
+                border-color: variables.$primary-light;
+                box-shadow: 0 0 3px variables.$primary-light;
+            }
+        }
+
+        .test-submit {
+            padding: 10px;
+            background-color: variables.$primary-light;
+            color: variables.$white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: variables.$hover-light;
+            }
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+
+            a {
+                font-size: 14px;
+                color: variables.$primary-light;
+                text-decoration: none;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -1px;
+                    left: 0;
+                    height: 1.25px;
+                    width: 100%;
+                    background-color: currentColor;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform 0.4s ease;
+                }
+
+                &:hover::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+}
+
+// Адаптив
+@media (max-width: 992px) {
+    .create-test-container {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .create-test-container {
+        padding: 0 40px;
+
+        .new-test-form {
+            padding: 20px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .create-test-container {
+        padding: 0 15px;
+
+        .new-test-form {
+            padding: 15px;
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+}

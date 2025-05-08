@@ -1,0 +1,117 @@
+@use '../variables';
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.wrapper {
+    background-color: variables.$white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .auth-header {
+        color: variables.$primary-light;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-form,
+    .register-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-label,
+    .register-label {
+        margin: 10px 0 5px;
+        color: #333;
+    }
+
+    .register-input,
+    .login-input,
+    .pass {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &:focus {
+            outline: none;
+            border-color: variables.$primary-light;
+            box-shadow: 0 0 3px variables.$primary-light;
+        }
+    }
+
+    .register-submit,
+    .login-submit {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: variables.$primary-light;
+        color: variables.$white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: variables.$hover-light;
+        }
+    }
+
+    .auth-links-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+
+        a {
+            font-size: 14px;
+            color: variables.$primary-light;
+            text-decoration: none;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                height: 1.25px;
+                width: 100%;
+                background-color: currentColor;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.5s ease;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
