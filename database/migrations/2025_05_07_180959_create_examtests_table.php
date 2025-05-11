@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->foreignId('category_id')->constrained('categories');
-            $table->enum('status', ['public','private','restricted'])->default('private');
+            $table->enum('status', ['public','restricted','archived'])->default('public');
             $table->foreignId('author_id')->constrained('users');
             $table->timestamps();
 

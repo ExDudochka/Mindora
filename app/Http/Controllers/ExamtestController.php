@@ -14,26 +14,51 @@ class ExamtestController extends Controller
         return view('pages.forms.newObject',compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        // Валидация данных
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
+        $validated = $r->validate([
+            'title' => 'required',
             'category_id' => 'required|exists:categories,id',
             'status' => 'required|in:public,restricted,archived',
+            'questions' => 'required|array|min:1',
+            'questions.*.content' => 'required|string',
+            'questions.*.type' => 'required|in:single,multiple,text',
         ]);
 
-        // Создание записи в таблице examtests
-        Examtest::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'category_id' => $request->category_id,
-            'status' => $request->status,
+        // Проверка наличия options для вопросов с выбором
+        foreach ($r->questions as $q) {
+            if (in_array($q['type'], ['single', 'multiple']) && empty($q['options'])) {
+                return back()->withErrors(['questions' => 'Для вопросов с выбором укажите варианты ответов']);
+            }
+        }
+
+        // Создаём тест
+        $test = Examtest::create([
+            'title' => $r->title,
+            'description' => $r->description,
+            'category_id' => $r->category_id,
+            'status' => $r->status,
             'author_id' => Auth::id(),
         ]);
 
-        // Редирект с сообщением об успехе
-        return redirect()->route('create_new_test')->with('success', 'Тест успешно создан!');
+        // Сохраняем вопросы и опции
+        foreach ($r->questions as $i => $q) {
+            $question = $test->questions()->create([
+                'content' => $q['content'],
+                'type' => $q['type'],
+                'position' => $i + 1,
+            ]);
+
+            if (in_array($q['type'], ['single', 'multiple'])) {
+                foreach ($q['options'] as $j => $opt) {
+                    $question->options()->create([
+                        'content' => $opt['text'],
+                        'is_correct' => !empty($q['options'][$j]['correct']),
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('home')->with('success', 'Тест сохранён');
     }
 }

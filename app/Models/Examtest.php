@@ -13,4 +13,6 @@ class Examtest extends Model
         'status',
         'author_id',
     ];
+
+    public function questions(){ return $this->hasMany(Question::class); }
 }

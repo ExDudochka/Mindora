@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->foreignId('question_id')->constrained('questions')->cascadeOnDelete();
-            $table->text('content');
-            $table->boolean('is_correct')->default(false);
+            $table->string('content');           // текст варианта
+            $table->boolean('is_correct')->default(false); // для проверки позже
             $table->timestamps();
-
-            $table->index('question_id');
         });
     }
 
