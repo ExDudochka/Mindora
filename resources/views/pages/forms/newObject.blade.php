@@ -86,9 +86,7 @@
 
             <div class="option-controls">
                 <label class="option-checkbox">
-                    <!-- Изменяем тип input в зависимости от вопроса -->
-                    <input type="checkbox" class="opt-correct" data-type="multiple" />
-                    <input type="radio" name="correct_option" class="opt-correct" data-type="single" />
+                    <input class="opt-correct" />
                     <span class="checkmark"></span>
                     <span class="option-label">Правильный</span>
                 </label>

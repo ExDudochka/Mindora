@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = clone.querySelector('.question-card');
         card.querySelector('.q-num').textContent = qCount;
 
-        // Задаём name-атрибуты
         const qText = card.querySelector('.q-text');
         const qType = card.querySelector('.q-type');
         const optsWrap = card.querySelector('.options-wrap');
@@ -20,19 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Обработчик изменения типа вопроса
         qType.addEventListener('change', () => {
-            optsWrap.style.display = qType.value === 'text' ? 'none' : 'flex';
+            const isText = qType.value === 'text';
+            optsWrap.style.display = isText ? 'none' : 'flex';
+
+            // Переключение всех input[type] внутри options
+            optsWrap.querySelectorAll('.opt-correct').forEach(input => {
+                input.type = qType.value === 'single' ? 'radio' : 'checkbox';
+                input.name = `questions[${qCount}][options][${input.dataset.index}][correct]`;
+            });
         });
 
-        // Кнопка добавления варианта
+        // Добавление варианта
         card.querySelector('.add-option').addEventListener('click', () => {
             const oClone = oTpl.content.cloneNode(true);
             const item = oClone.querySelector('.option-item');
             const idx = optsWrap.children.length;
 
-            item.querySelector('.opt-text').name = `questions[${qCount}][options][${idx}][text]`;
-            item.querySelector('.opt-correct').name = `questions[${qCount}][options][${idx}][correct]`;
+            // Назначаем data-index
+            const textInput = item.querySelector('.opt-text');
+            const correctInput = item.querySelector('.opt-correct');
 
-            item.querySelector('.remove-option').addEventListener('click', () => item.remove());
+            textInput.name = `questions[${qCount}][options][${idx}][text]`;
+            correctInput.dataset.index = idx;
+            correctInput.type = qType.value === 'single' ? 'radio' : 'checkbox';
+            correctInput.name = qType.value === 'single'
+                ? `questions[${qCount}][correct]`   // одинаковое имя — один radio
+                : `questions[${qCount}][options][${idx}][correct]`; // разные имена — много checkbox
+
+            item.querySelector('.remove-option').addEventListener('click', () => {
+                item.remove();
+                renumberQuestions(); // пересчёт индексов
+            });
 
             optsWrap.appendChild(item);
         });
@@ -44,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         wrap.appendChild(card);
-        // Автоматически добавляем первый вариант для вопросов с выбором
+
         if (qType.value !== 'text') {
             card.querySelector('.add-option').click();
         }
@@ -56,29 +73,27 @@ document.addEventListener('DOMContentLoaded', () => {
             qCount = index + 1;
             card.querySelector('.q-num').textContent = qCount;
 
-            // Обновляем name-атрибуты
             const qText = card.querySelector('.q-text');
             const qType = card.querySelector('.q-type');
 
             qText.name = `questions[${qCount}][content]`;
             qType.name = `questions[${qCount}][type]`;
 
-            // Обновляем name для вариантов ответа
-            card.querySelectorAll('.opt-text').forEach((opt, optIdx) => {
-                opt.name = `questions[${qCount}][options][${optIdx}][text]`;
-            });
+            card.querySelectorAll('.option-item').forEach((item, optIdx) => {
+                const optText = item.querySelector('.opt-text');
+                const optCorrect = item.querySelector('.opt-correct');
 
-            card.querySelectorAll('.opt-correct').forEach((opt, optIdx) => {
-                opt.name = `questions[${qCount}][options][${optIdx}][correct]`;
+                optText.name = `questions[${qCount}][options][${optIdx}][text]`;
+                optCorrect.name = `questions[${qCount}][options][${optIdx}][correct]`;
+                optCorrect.dataset.index = optIdx;
+                optCorrect.type = qType.value === 'single' ? 'radio' : 'checkbox';
             });
         });
     }
 
-    // Инициализация
     document.getElementById('add-question').addEventListener('click', addQuestion);
-    addQuestion(); // Добавляем первый вопрос по умолчанию
+    addQuestion();
 
-    // Обработчик отправки формы для валидации
     document.querySelector('.new-test-form').addEventListener('submit', (e) => {
         const questions = wrap.querySelectorAll('.question-card');
         if (questions.length === 0) {
@@ -87,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Проверка, что у вопросов с выбором есть варианты
         let isValid = true;
         questions.forEach(question => {
             const type = question.querySelector('.q-type').value;
