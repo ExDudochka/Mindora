@@ -106,6 +106,7 @@
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 1px solid #dee2e6;
+    background: variables.$background-sections;
 
     .q-text {
         margin-bottom: 1rem;
@@ -141,7 +142,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.75rem;
     margin-bottom: 10px;
     border-radius: 6px;
     background: #f8f9fa;
@@ -163,6 +163,11 @@
 }
 
 .option-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+
     input[type="radio"] {
         display: none; // Скрываем нативный радио
 
@@ -205,8 +210,8 @@
 
 .checkmark {
     display: inline-block;
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     border: 1px solid #dee2e6;
     border-radius: 3px;
     margin-right: 0.5rem;

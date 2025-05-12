@@ -4,17 +4,18 @@
 
 @section('content')
     <div class="container">
-        <h1>Доступные тесты</h1>
-
         <div class="tests-grid">
             @foreach ($examtests as $examtest)
                 <div class="test-card">
+                    <div class="test-card__category">
+                        <b>{{ $examtest->category->name ?? 'Без категории'  }}</b>
+                    </div>
                     <div class="test-card__header">
                         <h2 class="test-card__title">{{ $examtest->title }}</h2>
                     </div>
 
                     <div class="test-card__description">
-                        {{ $examtest->description }}
+                        {{ Str::limit($examtest->description, 133) }}
                     </div>
 
                     <div class="test-card__meta">
@@ -31,6 +32,7 @@
                     </div>
 
                     <div class="test-card__footer">
+                        {{ $examtest->author->login }}
                         <button href="#" class="btn-base btn-accent">Пройти тест</button>
                     </div>
                 </div>

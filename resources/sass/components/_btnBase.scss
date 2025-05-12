@@ -58,7 +58,7 @@
 
 .remove-option {
     @extend .btn-base;
-    padding: 0.25rem;
+    padding: 0.30rem;
     @include button-variant(
             variables.$danger,
             variables.$danger,
