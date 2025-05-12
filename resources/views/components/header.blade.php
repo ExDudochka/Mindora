@@ -21,7 +21,7 @@
         </div>
 
         <div class="header-container__actions">
-            <a href="{{ route('create_new_test') }}"><button class="btn-add-object">＋</button></a>
+            <a href="{{ route('create-new-test') }}"><button class="btn-add-object">＋</button></a>
             <button class="btn-auth" id="auth-reg-btn" data-auth-trigger="auth-modal">Вход</button>
         </div>
     </div>

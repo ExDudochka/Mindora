@@ -90,19 +90,6 @@
     margin-top: 2rem;
 }
 
-.btn {
-    padding: 0.75rem 1.25rem;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: none;
-}
-
 .btn-primary {
     background: variables.$primary-light;
     color: variables.$white;
@@ -110,80 +97,6 @@
 
 .btn-primary:hover {
     background: variables.$hover-light;
-}
-
-.btn-base {
-    font-weight: 600;
-    padding: 0.5rem 0.75rem;
-    transition: all 0.3s ease;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid transparent;
-}
-
-@mixin button-variant($background, $color, $hover-background, $hover-color) {
-    background-color: rgba($background, 0.15);
-    color: $color;
-    border-color: rgba($color, 0.3);
-
-    &:hover {
-        background-color: rgba($hover-background, 0.25);
-        box-shadow: 0 2px 6px rgba($hover-background, 0.15);
-        color: $hover-color;
-    }
-}
-
-// Специфичные классы кнопок
-.btn-secondary {
-    @extend .btn-base;
-    margin-top: 20px;
-    @include button-variant(
-            variables.$background-dark,
-            variables.$background-dark,
-            variables.$background-dark,
-            variables.$background-dark
-    );
-}
-
-.btn-danger {
-    @extend .btn-base;
-    @include button-variant(
-            variables.$danger,
-            variables.$danger,
-            variables.$hover-danger,
-            variables.$hover-danger
-    );
-}
-
-.btn-accent {
-    @extend .btn-base;
-    margin-top: 20px;
-    @include button-variant(
-            variables.$primary-light,
-            variables.$primary-light,
-            variables.$primary-light,
-            variables.$primary-light
-    );
-}
-
-.remove-option {
-    @extend .btn-base;
-    padding: 0.25rem;
-    @include button-variant(
-            variables.$danger,
-            variables.$danger,
-            variables.$danger,
-            variables.$danger
-    );
-    background-color: rgba(variables.$danger, 0.5);
-
-    &:hover {
-        background-color: rgba(variables.$danger, 0.75);
-    }
 }
 
 .question-card {
@@ -229,6 +142,7 @@
     align-items: center;
     gap: 1rem;
     padding: 0.75rem;
+    margin-bottom: 10px;
     border-radius: 6px;
     background: #f8f9fa;
 }

@@ -15,4 +15,6 @@ class Examtest extends Model
     ];
 
     public function questions(){ return $this->hasMany(Question::class); }
+    public function category(){return $this->belongsTo(Category::class);}
+    public function author(){return $this->belongsTo(User::class, 'author_id');}
 }

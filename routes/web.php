@@ -3,14 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ExamtestController;
+use App\Http\Controllers\CardController;
 
 Route::get('/welcome', function () {
     return view('pages.welcome');
 })->name('welcome');
 
-Route::get('/home', function () {
-    return view('pages.home');
-})->name('home');
+// Домашняя страница
+
+Route::get('/home', [CardController::class, 'index'])->name('home');
 
 // Маршруты авторизации и регистрации
 
@@ -23,6 +24,6 @@ Route::post('/register', [LoginController::class, 'createRegister'])->name('crea
 // Маршруты создания теста
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/create_new_test', [ExamtestController::class, 'create'])->name('create_new_test');
-    Route::post('/create_new_test/store', [ExamtestController::class, 'store'])->name('create_new_test.store');
+    Route::get('/create-new-test', [ExamtestController::class, 'create'])->name('create-new-test');
+    Route::post('/create-new-test/store', [ExamtestController::class, 'store'])->name('create-new-test.store');
 });

@@ -9,7 +9,7 @@
             <p class="test-description">Заполните основные данные и добавьте вопросы</p>
         </div>
 
-        <form class="new-test-form" action="{{ route('create_new_test.store') }}" method="post">
+        <form class="new-test-form" action="{{ route('create-new-test.store') }}" method="post">
             @csrf
 
             <div class="form-section">

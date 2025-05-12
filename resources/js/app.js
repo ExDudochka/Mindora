@@ -4,3 +4,4 @@ import './bootstrap'; // Подключаем другие зависимост�
 
 import './scripts.js';
 import './loginScripts.js';
+import './createTest.js';

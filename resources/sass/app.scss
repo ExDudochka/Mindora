@@ -4,9 +4,11 @@
 /* Компоненты */
 @use 'components/header';    // Стили шапки
 @use 'components/footer';    // Стили подвала
+@use 'components/btnBase';    // Стили кнопки
 
 /* Страницы */
 @use 'pages/welcome'; // Стили страницы приветствия
+@use 'pages/home'; // Стили для домашней страницы
 @use 'pages/login';     // Стили страницы авторизации и регистрации
 @use 'pages/newTest'; // Стили для страницы создания теста
 
@@ -26,7 +28,7 @@ body {
 
 main {
     flex: 1 0 auto;
-    // padding: 0 250px;
+    padding: 0 250px;
 }
 
 ::selection {
