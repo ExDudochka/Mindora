@@ -1,1 +1,156 @@
 @use '../variables'; // Стили, шрифты и т.д.
+
+.pass-test-container {
+    color: variables.$text-light;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+
+        .date {
+            font-size: 0.75rem;
+        }
+    }
+
+    .create-test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+    .description {
+        margin-bottom: 15px;
+    }
+
+    .question-block {
+        h3 {
+            font-size: 1.25rem;
+        }
+        margin-bottom: 10px;
+        background: variables.$background-sections;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .test-input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        transition: all 0.2s;
+        background: variables.$white;
+
+        &:hover {
+            background-color: rgba(variables.$primary-light, 0.05);
+        }
+    }
+
+    .test-select {
+        color: variables.$text-light;
+    }
+
+    .test-input:focus {
+        outline: none;
+        border-color: variables.$primary-light;
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        20%, 60% { transform: translateX(-5px); }
+        40%, 80% { transform: translateX(5px); }
+    }
+
+    .option-label {
+        white-space: nowrap;
+    }
+
+    .pass-info {
+        display: flex;
+        flex-direction: column;
+
+        .author {
+            font-size: 0.65rem;
+        }
+    }
+
+    .submit-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 10px 0;
+
+        .option-section {
+            display: block;
+            padding: 12px 16px;
+            background-color: #f1f1f1;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+
+            &:hover {
+                background-color: #e0e0e0;
+            }
+        }
+        .question-type {
+            font-size: 0.95rem;
+            color: #888;
+            margin: 4px 0 12px;
+            font-style: italic;
+        }
+
+        .option-section {
+            position: relative;
+            padding-right: 36px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border: 2px solid #ccc;
+                background: white;
+            }
+        }
+
+        // Когда выбрано — показываем галочку
+        input:checked + .option-section::after {
+            content: "✔";
+            color: #3490dc;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-color: #3490dc;
+            background-color: #e6f0fb;
+        }
+
+
+        // Активное состояние для radio/checkbox
+        input:checked + .option-section {
+            border-color: #3490dc;
+            background-color: #e6f0fb;
+            font-weight: bold;
+        }
+    }
+}
