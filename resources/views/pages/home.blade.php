@@ -6,7 +6,7 @@
     <div class="container">
         <div class="tests-grid">
             @foreach ($examtests as $examtest)
-                <div class="test-card">
+                <a class="test-card" href="{{ route('tests.pass', $examtest->id) }}">
                     <div class="test-card__category">
                         <b>{{ $examtest->category->name ?? 'Без категории'  }}</b>
                     </div>
@@ -35,7 +35,7 @@
                         {{ $examtest->author->login }}
                         <button href="#" class="btn-base btn-accent">Пройти тест</button>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>

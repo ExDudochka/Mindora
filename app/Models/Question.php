@@ -14,6 +14,6 @@ class Question extends Model
         'position',
     ];
 
-    public function options(){ return $this->hasMany(Option::class); }
+    public function options(){ return $this->hasMany(Option::class, 'question_id'); }
     public function examtest(){ return $this->belongsTo(Examtest::class); }
 }

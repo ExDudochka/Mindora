@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Examtest;
 use App\Models\Category;
+use App\Models\TestAttempt;
 
 class ExamtestController extends Controller
 {
@@ -60,5 +61,12 @@ class ExamtestController extends Controller
         }
 
         return redirect()->route('home')->with('success', 'Тест сохранён');
+    }
+
+
+    // Отображение теста
+    public function showTest()
+    {
+        return view('pages.forms.passTest');
     }
 }

@@ -242,18 +242,24 @@
 
 .tests-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Для 3 колонок */
-  gap: 1.5rem; /* Расстояние между элементами */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   /* Для адаптивности */
+}
+.tests-grid .test-card {
+  cursor: pointer;
+}
+.tests-grid .test-card:hover {
+  color: #333333;
 }
 @media (max-width: 1024px) {
   .tests-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки на экранах поменьше */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 768px) {
   .tests-grid {
-    grid-template-columns: 1fr; /* 1 колонка на мобильных устройствах */
+    grid-template-columns: 1fr;
   }
 }
 
@@ -266,8 +272,9 @@
   flex-direction: column;
   padding: 1.4em;
   transition: box-shadow 0.3s ease;
-  width: 100%; /* Карточки будут занимать всю доступную ширину в колонке */
-  max-width: 100%; /* Для адаптивности */
+  width: 100%;
+  max-width: 100%;
+  text-decoration: none;
 }
 .test-card:hover {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
@@ -687,6 +694,7 @@ body {
     padding: 1rem;
   }
 }
+/* Переменные */
 /* Общие стили */
 html, body {
   height: 100%;

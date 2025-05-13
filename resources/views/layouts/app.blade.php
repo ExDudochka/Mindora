@@ -19,7 +19,6 @@
 <body>
 @include('components.header') <!-- Вставляем шапку -->
 
-<div class="bg" id="bg"></div>
 <main class="main-container">
     @yield('content') <!-- Здесь будет содержимое конкретной страницы -->
 </main>

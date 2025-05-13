@@ -29,7 +29,6 @@
             <div class="col-md-3 col-6">
                 <h5>Условия предоставления услуг</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Условия</a></li>
                     <li><a href="#">Правила сообщества</a></li>
                     <li><a href="#">Конфиденциальность</a></li>
                 </ul>

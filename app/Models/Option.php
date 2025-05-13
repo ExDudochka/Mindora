@@ -12,4 +12,5 @@ class Option extends Model
         'is_correct',
     ];
     public function question(){ return $this->belongsTo(Question::class); }
+    public function isCorrect(){return $this->correct;}
 }
