@@ -46,7 +46,10 @@ Route::middleware('auth')->group(function() {
 
 // Личный кабинет
 
-Route::middleware('auth')->get('/lk', [LkController::class, 'index'])->name('lk');
+Route::middleware('auth')->group(function () {
+    Route::get('/lk', [LkController::class, 'index'])->name('lk');
+    Route::put('/profile/update', [App\Http\Controllers\LkController::class, 'update'])->name('profile.update');
+});
 
 // logout
 Route::post('/logout', function () {
