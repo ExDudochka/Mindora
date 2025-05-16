@@ -21,8 +21,14 @@
         </div>
 
         <div class="header-container__actions">
-            <a href="{{ route('create-new-test') }}"><button class="btn-add-object">＋</button></a>
-            <button class="btn-auth" id="auth-reg-btn" data-auth-trigger="auth-modal">Вход</button>
+            <a href="{{ route('create-new-test') }}"><button class="btn-accent">＋</button></a>
+            @auth
+                <!-- Пользователь авторизован -->
+                <a href="{{ route('lk') }}"><button class="btn-accent" id="lk-btn">лк</button></a>
+            @else
+                <!-- Пользователь не авторизован -->
+                <a href="{{ route('login') }}"><button class="btn-accent" id="auth-reg-btn" data-auth-trigger="auth-modal">Вход</button></a>
+            @endauth
         </div>
     </div>
 </header>

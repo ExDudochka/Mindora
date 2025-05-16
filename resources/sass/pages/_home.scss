@@ -29,6 +29,10 @@
     }
 }
 
+h1, h2, h4 {
+    color: variables.$heading-light;
+}
+
 .test-card {
     background: variables.$white;
     color: variables.$text-light;
@@ -76,5 +80,14 @@
         justify-content: space-between;
         align-items: end;
         height: 100%;
+
+        .footer-buttons {
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+        }
+        .author-lk {
+            color: white;
+        }
     }
 }

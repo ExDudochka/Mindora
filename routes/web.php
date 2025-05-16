@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+//Controllers
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ExamtestController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PassTestController;
+use App\Http\Controllers\LkController;
 
 Route::get('/welcome', function () {
     return view('pages.welcome');
@@ -27,12 +31,31 @@ Route::post('/register', [LoginController::class, 'createRegister'])->name('crea
 Route::middleware(['auth'])->group(function () {
     Route::get('/create-new-test', [ExamtestController::class, 'create'])->name('create-new-test');
     Route::post('/create-new-test/store', [ExamtestController::class, 'store'])->name('create-new-test.store');
+
+    // Страница редактирования
+    Route::get('/tests/{test}/edit',   [ExamtestController::class, 'edit'])->name('tests.edit');
+    Route::patch('/tests/{test}',      [ExamtestController::class, 'update'])->name('tests.update');
 });
 
 // Маршруты прохождения теста
 
 Route::middleware('auth')->group(function() {
-    Route::get('/tests/pass/{id}', [PassTestController::class, 'show'])->name('tests.pass');
+    Route::get('/tests/pass/{id}', [PassTestController::class, 'index'])->name('tests.pass');
     Route::post('/tests/pass/{id}', [PassTestController::class, 'submit'])->name('tests.submit');
-
 });
+
+// Личный кабинет
+
+Route::middleware('auth')->get('/lk', [LkController::class, 'index'])->name('lk');
+
+// logout
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/welcome');
+})->name('logout');
+
+
+Route::get('/tests/delete/{id}', function ($id) {
+    DB::table('examtests')->where('id', $id)->delete();
+    return redirect()->back()->with('success', 'Тест удалён');
+})->name('tests.delete');

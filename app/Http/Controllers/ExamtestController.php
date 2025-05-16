@@ -50,23 +50,24 @@ class ExamtestController extends Controller
                 'position' => $i + 1,
             ]);
 
-            if (in_array($q['type'], ['single', 'multiple'])) {
+            if (in_array($q['type'], ['single', 'multiple']) && !empty($q['options'])) {
                 foreach ($q['options'] as $j => $opt) {
+                    $isCorrect = false;
+
+                    if ($q['type'] === 'single') {
+                        $isCorrect = isset($q['correct']) && $q['correct'] == $j;
+                    } elseif ($q['type'] === 'multiple') {
+                        $isCorrect = isset($opt['correct']); // если чекбокс был установлен, будет передан
+                    }
+
                     $question->options()->create([
                         'content' => $opt['text'],
-                        'is_correct' => !empty($q['options'][$j]['correct']),
+                        'is_correct' => $isCorrect,
                     ]);
                 }
             }
         }
 
         return redirect()->route('home')->with('success', 'Тест сохранён');
-    }
-
-
-    // Отображение теста
-    public function showTest()
-    {
-        return view('pages.forms.passTest');
     }
 }

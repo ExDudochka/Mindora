@@ -29,6 +29,10 @@ return new class extends Migration
             // Процент от максимума
             $table->unsignedTinyInteger('percent')->default(0);
 
+            $table->unsignedSmallInteger('correct')->default(0);
+            $table->unsignedSmallInteger('total')->default(0);
+            $table->unsignedTinyInteger('grade')->nullable();
+
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();
             $table->timestamps();

@@ -1,0 +1,251 @@
+@use '../variables'; // Цвета, шрифты и т.д.
+
+.lk-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Сайдбар */
+.lk-sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lk-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.lk-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 2px solid #d3d3d3;
+}
+
+.lk-username {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Навигация */
+.lk-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.lk-nav-link {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: variables.$text-light;
+    font-weight: 500;
+    transition: background 0.3s;
+    text-align: left;
+    border: 1px solid transparent;
+
+    &:hover {
+        color: variables.$primary-light;
+        background: #f0f0f0;
+    }
+
+    &.active {
+        background-color: rgba(variables.$primary-light, 0.15);
+        color: variables.$primary-light;
+        border-color: rgba(variables.$primary-light, 0.3);
+
+            &:hover {
+            background-color: rgba(variables.$primary-light, 0.25);
+            box-shadow: 0 2px 6px rgba(variables.$primary-light, 0.15);
+            color: variables.$primary-light;
+        }
+    }
+
+    &.logout {
+        margin-top: auto;
+        background-color: rgba(variables.$danger, 0.15);
+        color: variables.$danger;
+        border-color: rgba(variables.$danger, 0.3);
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(variables.$hover-danger, 0.75);
+            box-shadow: 0 2px 6px rgba(variables.$danger, 0.15);
+            color: variables.$white;
+        }
+    }
+}
+
+/* Контент */
+.lk-main {
+    flex: 1;
+    padding: 32px;
+}
+
+.lk-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.lk-profile-block {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    max-width: 600px;
+}
+
+.lk-profile-item {
+    margin-bottom: 16px;
+    font-size: 16px;
+
+    .label {
+        font-weight: 600;
+        color: #555;
+        margin-right: 6px;
+    }
+}
+
+.lk-tests-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.modal-window {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .modal-warning {
+        color: red;
+        font-weight: bold;
+    }
+
+    ul {
+        padding-left: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        li {
+            margin-bottom: 5px;
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 16px;
+
+        .btn-cancel {
+            background: none;
+            border: none;
+            color: #666;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .btn-confirm-delete {
+            background-color: #d93025;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: not-allowed;
+
+            &.active {
+                cursor: pointer;
+                background-color: #c62828;
+            }
+        }
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #888;
+
+        &:hover {
+            color: #000;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .lk-container {
+        flex-direction: column;
+    }
+
+    .lk-sidebar {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        padding: 12px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .lk-user-info {
+        display: none; // Убрать фото и имя на мобильных
+    }
+
+    .lk-main {
+        padding: 16px;
+    }
+
+    .lk-profile-block {
+        padding: 16px;
+    }
+}

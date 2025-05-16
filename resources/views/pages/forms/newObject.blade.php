@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="test-label">Статус:</label>
+                        <label class="test-label">Доступность:</label>
                         <select class="test-input test-select" name="status" required>
                             <option class="test-option" value="public">Публичный</option>
                             <option class="test-option" value="restricted">Ограниченный</option>

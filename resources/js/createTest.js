@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             correctInput.name = qType.value === 'single'
                 ? `questions[${qCount}][correct]`   // одинаковое имя — один radio
                 : `questions[${qCount}][options][${idx}][correct]`; // разные имена — много checkbox
+            correctInput.value = idx;
 
             item.querySelector('.remove-option').addEventListener('click', () => {
                 item.remove();
