@@ -10,8 +10,8 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\PassTestController;
 use App\Http\Controllers\LkController;
 
-Route::get('/welcome', function () {
-    return view('pages.welcome');
+Route::get('/', function () {
+    return view('welcome');
 })->name('welcome');
 
 // Домашняя страница
@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
 // logout
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/welcome');
+    return redirect('/');
 })->name('logout');
 
 
