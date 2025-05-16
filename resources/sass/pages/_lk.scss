@@ -93,6 +93,12 @@
 .lk-main {
     flex: 1;
     padding: 32px;
+    h1 {
+        color: variables.$heading-light;
+    }
+    .author-lk {
+        visibility: hidden;
+    }
 }
 
 .lk-title {

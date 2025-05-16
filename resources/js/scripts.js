@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (section === 'profile') {
             profileSection.style.display = 'block';
             testsSection.style.display = 'none';
-            links[0].classList.add('active');
+            links.forEach(link => {
+                if (link.textContent.includes('Профиль')) {
+                    link.classList.add('active');
+                }
+            });
         } else if (section === 'tests') {
             profileSection.style.display = 'none';
             testsSection.style.display = 'block';
@@ -31,11 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // === Обработчики кликов ===
     links.forEach(link => {
         link.addEventListener('click', function (e) {
+            // Если кнопка внутри формы с классом logout — разрешаем отправку формы (не отменяем)
+            if (this.closest('form') && this.classList.contains('logout')) {
+                return; // выходим, чтобы форма отправилась
+            }
+
+            // Для остальных — блокируем переход по ссылке
             e.preventDefault();
 
             const text = this.textContent.trim();
 
-            // Сохраняем выбранный раздел в localStorage
             if (text.includes('Профиль')) {
                 localStorage.setItem('activeSection', 'profile');
                 showSection('profile');
@@ -46,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// --- Модальное окно удаления (без изменений) ---
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('deleteModal');
@@ -58,31 +69,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTestTitle = '';
     let currentTestId = null;
 
-    // Навешиваем обработчики на каждую кнопку удаления
     document.querySelectorAll('.btn-delete-test').forEach(button => {
         button.addEventListener('click', () => {
             currentTestTitle = button.getAttribute('data-title').trim();
             currentTestId = button.getAttribute('data-id');
 
-            // Обновляем текст в модалке
             testTitlePlaceholder.textContent = `"${currentTestTitle}"`;
             input.value = '';
             confirmBtn.disabled = true;
             confirmBtn.classList.remove('active');
 
-            // Показываем модалку
             modal.classList.add('active');
         });
     });
 
-    // Закрытие модалки
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     cancelBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', e => {
         if (e.target === modal) modal.classList.remove('active');
     });
 
-    // Проверка ввода
     input.addEventListener('input', () => {
         if (input.value.trim() === currentTestTitle) {
             confirmBtn.disabled = false;
@@ -93,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Подтверждение удаления
     confirmBtn.addEventListener('click', () => {
         if (input.value.trim() === currentTestTitle) {
             window.location.href = `/tests/delete/${currentTestId}`;

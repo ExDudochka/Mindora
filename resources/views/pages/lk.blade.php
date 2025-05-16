@@ -39,7 +39,7 @@
                 @else
                     <div class="lk-tests-grid">
                         @foreach($userTests as $test)
-                            <div class="test-card" href="{{ route('tests.pass', $test->id) }}">
+                            <a class="test-card">
                                 <div class="test-card__category">
                                     <b>{{ $test->category->name ?? 'Без категории'  }}</b>
                                 </div>
@@ -78,7 +78,7 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
                 @endif
